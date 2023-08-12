@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./src/components/Home";
+import TabNavi from "./src/components/TabNavi";
 
 function ButtonHomeScreen({ navigation }) {
   return (
@@ -35,6 +37,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Início"  component={ButtonHomeScreen} />
+        <Stack.Screen name="Home" options={{ headerTitle: false }} component={TabNavi}/>
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
