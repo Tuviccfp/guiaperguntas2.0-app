@@ -4,7 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./src/components/Home";
 import TabNavi from "./src/components/TabNavi";
-
+import { ThemeProvider } from "./src/components/Settings/Theme/ThemeContext";
+import ThemeSwitcher from "./src/components/Settings/Theme/ThemeSwitcher";
 function ButtonHomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -35,9 +36,13 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Início"  component={ButtonHomeScreen} />
-        <Stack.Screen name="Home" options={{ headerTitle: false }} component={TabNavi}/>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Início" component={ButtonHomeScreen} />
+        <Stack.Screen
+          name="Home"
+          options={{ headerTitle: false }}
+          component={TabNavi}
+        />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>

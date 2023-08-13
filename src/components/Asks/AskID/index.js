@@ -47,18 +47,17 @@ export default function AskID({ route }) {
         }
     }
 
+    const handleResponsePress = (_id) => {
+        navigation.navigate('Resposta', { _id, onDataUpdated: getAskID }) //Passa a função getAskID como prop para FormResponse
+    }
+
     React.useEffect(() => {
         getAskID();
     }, [])
 
-    const handleResponsePress = (_id) => {
-        navigation.navigate('Resposta', { _id })
-    }
-
     const Card = () => (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <Asks item={dataAsk} onPress={() => handleResponsePress(dataAsk._id)} />
-          <SafeAreaView>
             <FlatList
               data={dataResponse}
               renderItem={({ item }) => (
@@ -69,16 +68,13 @@ export default function AskID({ route }) {
               )}
               keyExtractor={(item) => item._id}
             />
-          </SafeAreaView>
-        </View>
+        </SafeAreaView>
       )
     
        return (
          <Stack.Navigator screenOptions={{ headerShown: false }}>
              <Stack.Screen name="Card" component={Card}/>
              <Stack.Screen name="Resposta" component={FormResponse} />
-             {/* {dataAsk.askId.map((item) => {
-            })} */}
          </Stack.Navigator>
        );
     }

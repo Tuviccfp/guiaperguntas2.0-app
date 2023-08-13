@@ -1,17 +1,12 @@
-import { View, Text, StyleSheet } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import ThemeSwitcher from "./Theme/ThemeSwitcher";
+
+const Stack = createNativeStackNavigator();
 
 export default function Settings() {
     return (
-        <View style={styles.container}>
-            <Text>Settings</Text>
-        </View>
+        <Stack.Navigator>
+         <Stack.Screen name="Theme" component={ThemeSwitcher}/>   
+        </Stack.Navigator>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: 'center',
-    }
-})
